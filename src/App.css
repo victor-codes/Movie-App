@@ -1,0 +1,115 @@
+*,
+*::after,
+*::before {
+  font: 62.5% -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";  box-sizing: border-box;
+}
+
+body {
+  padding: 16px;
+}
+
+.movie_div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px;
+  max-width: 580px;
+  border: 1px solid #e5e4e9;
+  border-radius: 8px;
+  gap: 16px;
+  margin: 0 auto 32px;
+  cursor: pointer;
+  transition: box-shadow 300ms;
+}
+
+.movie-container:hover {
+  box-shadow: rgb(0 0 0 / 8%) 0px 5px 15px -5px;
+}
+
+.poster {
+  min-width: 100%;
+  object-fit: cover;
+  height: 172px !important;
+  border-radius: 4px;
+}
+
+.yaer,
+.runtime,
+.language {
+  font-size: 1.1rem;
+  letter-spacing: 0.005em !important;
+  display: inline-flex;
+  border-radius: 4px;
+  margin: 0;
+}
+
+p {
+  text-decoration: none !important;
+  font-size: 1.2rem;
+  color: #212529;
+  margin: 0;
+}
+
+.movie_poster {
+  width: 100%;
+  max-width: 130px !important;
+  border: 1px solid #E5E4E9;
+  padding: 8  px;
+}
+
+.facts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  font-family: Roboto;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 23px;
+  letter-spacing: 0.0015em;
+  text-align: left;
+  margin: 0;
+}
+
+.plot_text_size {
+  font-size: 1.3rem !important;
+  font-style: normal;
+  line-height: 170%;
+  letter-spacing: 0.005em;
+}
+
+.title_div {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.plot_div {
+  left: 0px;
+  top: 35px;
+  border-radius: 0px;
+  padding: 4px 0;
+}
+
+.movie_details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4px;
+  flex-direction: column;
+}
+
+.italic {
+  margin-top: 8px;
+}
+
+.genre {
+  margin-bottom: 2px;
+}
+
+.padding {
+  padding: 0 8px;
+}

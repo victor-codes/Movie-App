@@ -1,0 +1,57 @@
+.content_width {
+    display: flex;
+    gap: 32px;
+    max-width: 576px;
+    margin: auto;
+}
+
+.movie_details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.poster {
+    width: 180px;
+    border: 1px solid #E5E4E9;
+    padding: 12px;
+    height: 216px;
+    object-fit: cover;
+}
+
+h1 {
+    font-size: 3.2rem;
+    margin: 0 0 8px;
+}
+
+.caption_text_size {
+    font-size: 1.4rem;
+}
+
+.year,
+.genres,
+.runtime,
+.language,
+.caption_text_size {
+    font-size: 1.4rem;
+}
+
+.facts {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.plot_text_size {
+    font-size: 1.6rem;
+    line-height: 150%;
+}
+
+@media screen and (max-width:520px) {
+    .content_width {
+        flex-direction: column;
+    }
+
+    .poster {
+    }
+}
