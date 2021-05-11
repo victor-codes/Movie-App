@@ -17,10 +17,6 @@ body {
   margin-top: 56px;
 }
 
-.App>a {
-  margin: 0 auto 32px;
-}
-
 .movie_div {
   display: flex;
   flex-direction: row;
@@ -165,4 +161,38 @@ button {
   background: #e5e4e9;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.home_div {
+  /* position: fixed; */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 88px);
+  overflow-y: hidden;
+}
+
+.home_heading {
+  font-size: 3.2rem;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.home_btn {
+  padding: 10px 16px;
+  font-size: 1.4rem;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.login {
+  background-color: #3f51b5;
+}
+
+.register {
+  color: #121212;
+  background-color: #f1f2f7;
+  margin-left: 16px;
 }

@@ -2,7 +2,6 @@
     display: flex;
     gap: 32px;
     max-width: 576px;
-    /* margin: auto; */
 }
 
 .movie_details {

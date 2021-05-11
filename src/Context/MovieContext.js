@@ -5,16 +5,16 @@ export const MovieContext = createContext();
 
 const apikey = "352d50a";
 
-const apiUrl = `https://www.omdbapi.com/?apikey=${apikey}&t=mortal+kombat&plot=full`
+const apiUrl = `https://www.omdbapi.com/?apikey=${apikey}&t=mortal+kombat&plot=full`;
 
 export default function MovieProvider(props) {
   useEffect(() => {
-      axios.get(apiUrl).then((response)=> {
-          const data = response.data
-          console.log(data);
-          setMoviesList([data])
-      })
-  });
+    axios.get(apiUrl).then((response) => {
+      const data = response.data;
+      console.log(data);
+      setMoviesList([data]);
+    });
+  }, []);
 
   const [moviesList, setMoviesList] = useState([
     {
