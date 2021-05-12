@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./SignUp.module.css";
 import { animated, useSpring, config } from "react-spring";
-import useLocalStorage from "./useLocalStorage";
 
-export default function Login({ close }) {
+
+export default function Login({ close, login }) {
+  const [showError, setShowError] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  
   const [props, api] = useSpring(
     {
       from: { y: -1300, opacity: 0 },
@@ -17,20 +19,23 @@ export default function Login({ close }) {
     api.start({ y: 0, opacity: 1, delay: 200, config: config.wobbly.tension });
   }, []);
 
-  // const [login, setLogin] = useLocalStorage("loggedIn", "false");
 
   return (
-    <div
-      className={styles.overlay}>
+    <div className={styles.overlay}>
       <animated.form
         className={styles.form}
         style={props}
         onSubmit={(e) => {
           e.preventDefault();
-          localStorage.getItem("username");
-          localStorage.getItem("password");
-          // setLogin("true");
+          const LocalUsername = localStorage.getItem("username");
+          const LocalPassword = localStorage.getItem("password");
           localStorage.setItem("loggedIn", "true");
+
+          if (username === LocalUsername && password === LocalPassword) {
+            return login(true);
+          } else {
+            return setShowError(true);
+          }
         }}
       >
         <div className={styles.close_btn}>
@@ -80,6 +85,19 @@ export default function Login({ close }) {
             required
           />
         </label>
+        {showError ? (
+          <span
+            style={{
+              fontSize: "1.4rem",
+              marginTop: "8px",
+              color: "rgb(239, 83, 80)",
+            }}
+          >
+            There was an error: Invalid username or password
+          </span>
+        ) : (
+          ""
+        )}
         <button
           style={{ marginTop: "24px" }}
           className={styles.btn}

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "./SignUp.module.css";
 import { animated, useSpring, config } from "react-spring";
+import { Redirect } from "react-router";
 
-export default function SignUp({ close }) {
+export default function SignUp({ close, login }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
+  const [showError, showSetError] = useState(false);
+
   const [props, api] = useSpring(
     {
       from: { y: -1300, opacity: 0 },
@@ -18,8 +20,7 @@ export default function SignUp({ close }) {
   }, []);
 
   return (
-    <div
-      className={styles.overlay}>
+    <div className={styles.overlay}>
       <animated.form
         className={styles.form}
         style={props}
@@ -27,6 +28,8 @@ export default function SignUp({ close }) {
           e.preventDefault();
           localStorage.setItem("username", username);
           localStorage.setItem("password", password);
+          localStorage.setItem("loggedIn", true);
+          return login(true);
         }}
       >
         <div className={styles.close_btn}>
@@ -47,7 +50,7 @@ export default function SignUp({ close }) {
             </svg>
           </button>
         </div>
-        <h1 className={styles.heading_1}>Sign Up</h1>
+        <h1 className={styles.heading_1}>Register</h1>
         <label htmlFor="username">
           <span className={styles.label_text}>Username</span>
           <input
@@ -77,12 +80,18 @@ export default function SignUp({ close }) {
             required
           />
         </label>
+
         <button
-          style={{ marginTop: "24px" }}
+          style={{
+            marginTop: "24px",
+            backgroundColor: "#f1f2f7",
+            color: "#121212",
+            borderColor: "#f1f2f7",
+          }}
           className={styles.btn}
           type="submit"
         >
-          SIGN IN
+          REGISTER
         </button>
       </animated.form>
     </div>

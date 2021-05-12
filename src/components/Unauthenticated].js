@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import SignUp from "./SignUp";
 import Login from "./Login";
 
-export default function Home() {
-  const [login, setLogin] = useState(false);
-  const [signUp, setSignUp] = useState(false);
+export default function Unauthenticated({ login }) {
+  const [loginModal, setLoginModal] = useState(false);
+  const [signupModal, setSignupModal] = useState(false);
   return (
     <>
       <div className="home_div">
@@ -13,7 +13,7 @@ export default function Home() {
           <h1 className="home_heading">Movie</h1>
           <button
             onClick={() => {
-              setLogin(true);
+              setLoginModal(true);
             }}
             className="home_btn login"
           >
@@ -21,7 +21,7 @@ export default function Home() {
           </button>
           <button
             onClick={() => {
-              setSignUp(true);
+              setSignupModal(true);
             }}
             className="home_btn register"
           >
@@ -29,8 +29,18 @@ export default function Home() {
           </button>
         </div>
       </div>
-      {signUp ? <SignUp close={(val) => setSignUp(val)} /> : ""}
-      {login ? <Login close={(val) => setLogin(val)} /> : ""}
+
+      {signupModal ? (
+        <SignUp login={(e) => login(e)} close={(e) => setSignupModal(e)} />
+      ) : (
+        ""
+      )}
+
+      {loginModal ? (
+        <Login login={(e) => login(e)} close={(e) => setLoginModal(e)} />
+      ) : (
+        ""
+      )}
     </>
   );
 }
