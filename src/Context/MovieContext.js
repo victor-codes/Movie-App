@@ -11,7 +11,6 @@ export default function MovieProvider(props) {
   useEffect(() => {
     axios.get(apiUrl).then((response) => {
       const data = response.data;
-      console.log(data);
       setMoviesList([data]);
     });
   }, []);

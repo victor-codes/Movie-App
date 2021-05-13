@@ -6,8 +6,9 @@ const MovieList = () => {
   const [moviesList] = useContext(MovieContext);
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-      {moviesList.map((movie) => (
+      {moviesList.map((movie, id) => (
         <Movie
+          key={id}
           title={movie.Title}
           plot={movie.Plot}
           director={movie.Director}

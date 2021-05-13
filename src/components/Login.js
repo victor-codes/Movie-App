@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./SignUp.module.css";
 import { animated, useSpring, config } from "react-spring";
 
@@ -7,7 +7,7 @@ export default function Login({ close, login }) {
   const [showError, setShowError] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const [props, api] = useSpring(
     {
       from: { y: -1300, opacity: 0 },
@@ -17,7 +17,7 @@ export default function Login({ close, login }) {
 
   useEffect(() => {
     api.start({ y: 0, opacity: 1, delay: 200, config: config.wobbly.tension });
-  }, []);
+  }, [api]);
 
 
   return (

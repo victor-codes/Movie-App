@@ -1,13 +1,8 @@
-import React, { useEffect } from "react";
-import { Redirect } from "react-router";
+import React from "react";
 
-export default function UserInfo({ name, logout }) {
+export default function UserInfo({ logout }) {
   const username = localStorage.getItem("username");
-  // useEffect(() => {
-  //   if (appState === "false") {
-  //     return <Redirect to="/" />;
-  //   }
-  // });
+
   return (
     <div className="absolute">
       {username}

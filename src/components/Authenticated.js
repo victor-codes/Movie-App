@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MovieInfo from "../components/MovieInfo";
 import UserInfo from "../components/UserInfo";
@@ -8,12 +8,6 @@ import MovieProvider from "../Context/MovieContext";
 import NavBar from "../components/NavBar";
 
 export default function Authenticated({ logout }) {
-  //   const loggedin = localStorage.getItem("loggedIn");
-  //   const [login, setLogin] = useState(loggedin);
-
-  // useEffect(() => {
-  //   setLogin(loggedin);
-  // });
 
   return (
     <MovieProvider>
