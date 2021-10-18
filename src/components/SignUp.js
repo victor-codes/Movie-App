@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import styles from "./SignUp.module.css";
 import { animated, useSpring, config } from "react-spring";
-// const bcrypt = require("bcrypt");
+import { hashIt } from "../utils/encrypt";
+// import { nanoid } from "nanoid";
 
 export default function SignUp({ close, login }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showError, setShowError] = useState(false);
+
+  // function pattern(username, passwordHash) {
+  //   const container = [];
+  //   let userData = {
+  //     passwordHash: passwordHash,
+  //     username: username,
+  //   };
+  //   return container.push(userData);
+  // }
 
   const [props, api] = useSpring(
     {
@@ -26,18 +36,27 @@ export default function SignUp({ close, login }) {
         style={props}
         onSubmit={(e) => {
           e.preventDefault();
-          localStorage.getItem("username", username);
-          localStorage.getItem("password", password);
+          // localStorage.getItem("username", username);
+          // localStorage.getItem("password", password);
 
+          const passwordHash = hashIt(password);
           if (localStorage.getItem("username") !== username) {
-            // async function hashIt(password) {
-            //   const salt = await bcrypt.genSalt(6);
-            //   const hashed = await bcrypt.hash(password, salt);
-            // }
+            let userID = {
+              passwordHash: passwordHash,
+              username: username,
+            };
+            let userDetails = [];
 
-            localStorage.setItem("username", username);
-            localStorage.setItem("password", password);
+            userDetails.push(...userDetails, userID);
+            localStorage.setItem("userID", JSON.stringify(userDetails));
+            console.log(userDetails);
+
+            localStorage.getItem("userID");
+            // localStorage.setItem("username", username);
+
+            // localStorage.setItem("password", hashIt(password));
             localStorage.setItem("loggedIn", true);
+
             return login(true);
           } else {
             setShowError(true);
@@ -84,8 +103,8 @@ export default function SignUp({ close, login }) {
             type="password"
             id="password"
             placeholder="Password"
+            autoComplete="current-password"
             value={password}
-            autoComplete
             onChange={(e) => {
               setPassword(e.target.value);
             }}

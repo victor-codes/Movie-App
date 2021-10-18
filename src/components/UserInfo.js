@@ -1,11 +1,11 @@
 import React from "react";
 
 export default function UserInfo({ logout }) {
-  const username = localStorage.getItem("username");
+  const username = JSON.parse(localStorage.getItem("userID")) || "[]";
 
   return (
     <div className="absolute">
-      {username}
+      {/* {username[0].username ? username[0].username : "  "} */}
       <button
         onClick={() => {
           logout(false);

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./SignUp.module.css";
 import { animated, useSpring, config } from "react-spring";
+import { compareIt } from "../utils/encrypt";
 
-
-export default function Login({ close, login }) {
+export default function Login({ close, login, rf, modal, closeModal }) {
   const [showError, setShowError] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,11 +14,14 @@ export default function Login({ close, login }) {
     },
     []
   );
-
+  useEffect(() => {
+    if (rf) {
+      closeModal.current.focus();
+    }
+  }, [rf]);
   useEffect(() => {
     api.start({ y: 0, opacity: 1, delay: 200, config: config.wobbly.tension });
   }, [api]);
-
 
   return (
     <div className={styles.overlay}>
@@ -27,11 +30,13 @@ export default function Login({ close, login }) {
         style={props}
         onSubmit={(e) => {
           e.preventDefault();
-          const LocalUsername = localStorage.getItem("username");
-          const LocalPassword = localStorage.getItem("password");
+          const userID = JSON.parse(localStorage.getItem("userID"));
           localStorage.setItem("loggedIn", "true");
 
-          if (username === LocalUsername && password === LocalPassword) {
+          if (
+            username === userID[0].username &&
+            compareIt(password, userID[0].passwordHash)
+          ) {
             return login(true);
           } else {
             return setShowError(true);
@@ -39,7 +44,14 @@ export default function Login({ close, login }) {
         }}
       >
         <div className={styles.close_btn}>
-          <button onClick={() => close(false)} className={styles.close_button}>
+          <button
+            ref={closeModal}
+            tabIndex={0}
+            onClick={() => {
+              return close(false) && modal(false);
+            }}
+            className={styles.close_button}
+          >
             <svg
               className={styles.w_6}
               fill="none"
@@ -69,6 +81,7 @@ export default function Login({ close, login }) {
               setUsername(e.target.value);
             }}
             required
+            tabIndex={0}
           />
         </label>
         <label style={{ marginTop: "24px" }} htmlFor="password">
@@ -83,6 +96,7 @@ export default function Login({ close, login }) {
               setPassword(e.target.value);
             }}
             required
+            tabIndex={0}
           />
         </label>
         {showError ? (
@@ -102,6 +116,7 @@ export default function Login({ close, login }) {
           style={{ marginTop: "24px" }}
           className={styles.btn}
           type="submit"
+          tabIndex={0}
         >
           LOG IN
         </button>

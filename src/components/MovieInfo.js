@@ -1,15 +1,17 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styles from "./MovieInfo.module.css";
 
 function MovieInfo() {
   return (
     <div className={styles.content_width}>
-      <div>
-        <img
-          className={styles.poster}
-          src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1UCOF11QCw8kcqvce8LKOO6pimh.jpg"
-          alt=""
-        />
+      <div className={styles.img_width}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <img
+            className={styles.poster}
+            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1UCOF11QCw8kcqvce8LKOO6pimh.jpg"
+            alt=""
+          />
+        </Suspense>
       </div>
       <div className={styles.movie_details}>
         <div className={styles.movie_info}>
@@ -35,18 +37,23 @@ function MovieInfo() {
                 Action, Adventure, Fantasy, Sci-Fi, Thriller
               </span>
             </p>
+            <p>
+              <span className={styles.caption_text_size}>Cast: </span>
+              <span className={styles.caption_text_size}>
+                Christopher Lambert, Robin Shou, Linden Ashby, Cary-Hiroyuki
+                Tagawa"
+              </span>
+            </p>
           </div>
         </div>
         <div>
           <p className={styles.plot_text_size}>
-            Christopher Lambert, Robin Shou, Linden Ashby, Cary-Hiroyuki
-            Tagawa", Plot: "Based on the popular video game of the same name
-            "Mortal Kombat" tells the story of an ancient tournament where the
-            best of the best of different Realms fight each other. The goal -
-            ten wins to be able to legally invade the losing Realm. Outworld has
-            so far collected nine wins against Earthrealm, so it's up to Lord
-            Rayden and his fighters to stop Outworld from reaching the final
-            victory.
+            Plot: "Based on the popular video game of the same name "Mortal
+            Kombat" tells the story of an ancient tournament where the best of
+            the best of different Realms fight each other. The goal - ten wins
+            to be able to legally invade the losing Realm. Outworld has so far
+            collected nine wins against Earthrealm, so it's up to Lord Rayden
+            and his fighters to stop Outworld from reaching the final victory.
           </p>
         </div>
         <div>

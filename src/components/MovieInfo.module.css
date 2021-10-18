@@ -4,6 +4,11 @@
     max-width: 576px;
 }
 
+.img_width {
+    width: 100%;
+    max-width: 180px;
+}
+
 .movie_details {
     display: flex;
     flex-wrap: wrap;
@@ -12,7 +17,7 @@
 
 .poster {
     width: 180px;
-    border: 1px solid #E5E4E9;
+    border: var(--border-width) solid var(--secondary-color);
     padding: 12px;
     height: 216px;
     object-fit: cover;
@@ -38,6 +43,10 @@ h1 {
 .facts {
     display: flex;
     align-items: center;
+    margin-bottom: 16px;
+}
+
+.genres {
     margin-bottom: 16px;
 }
 

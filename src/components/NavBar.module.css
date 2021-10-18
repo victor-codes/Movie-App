@@ -1,6 +1,6 @@
 .navbar_container {
     padding: 16px 24px;
-    border: 1px solid #e5e4e9;
+    border: var(--border-width) solid var(--secondary-color);
 }
 
 ul {
@@ -31,12 +31,12 @@ a {
 }
 
 .link_active {
-    border-left: 5px solid #3f51b5;
-    background: rgba(63, 81, 181, 0.1);
+    border-left: 5px solid var(--primary-color);
+    background: var(--navbar-background-active);
 }
 
 .link:hover,
 .link:focus {
-    background: rgba(63, 81, 181, 0.1);
-    color: #3f51b5;
+    background: var(--navbar-background-active);
+    color: var(--primary-color);
 }
